@@ -97,3 +97,27 @@
     el.textContent = String(new Date().getFullYear());
   });
 })();
+
+
+/* Language switch: swaps tagged strings to Chinese and back */
+(function(){
+  var ZH = {
+    "nav.dishes":"菜品", "nav.menu":"完整菜单", "nav.about":"关于我们",
+    "nav.reviews":"顾客评价", "nav.find":"联系我们"
+  };
+  var els = document.querySelectorAll('[data-i18n]');
+  els.forEach(function(el){ el.setAttribute('data-en', el.innerHTML); });
+  function setLang(l){
+    els.forEach(function(el){
+      var k = el.getAttribute('data-i18n');
+      el.innerHTML = (l === 'zh' && ZH[k]) ? ZH[k] : el.getAttribute('data-en');
+    });
+    document.documentElement.lang = (l === 'zh') ? 'zh' : 'en-NZ';
+    document.querySelectorAll('.lang').forEach(function(s){ s.value = l; });
+    try { localStorage.setItem('no8-lang', l); } catch(e){}
+  }
+  document.querySelectorAll('.lang').forEach(function(sel){
+    sel.addEventListener('change', function(){ setLang(sel.value); });
+  });
+  try { var saved = localStorage.getItem('no8-lang'); if (saved === 'zh') setLang('zh'); } catch(e){}
+})();

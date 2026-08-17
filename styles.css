@@ -8,15 +8,16 @@
   --ink:      #0C0B0A;
   --ink-2:    #14120F;
   --ink-3:    #1E1B16;
-  --bone:     #F4F0E9;
+  --bone:     #F2F1EE;
   --paper:    #FFFFFF;
-  --body:     #3A3631;
-  --muted:    #6E6862;
+  --body:     #34322F;
+  --muted:    #6A6763;
   --line:     rgba(12,11,10,.12);
   --line-dk:  rgba(255,255,255,.14);
-  --accent:   #B7302A;
-  --accent-d: #8F231E;
+  --accent:   #C9A24B;
+  --accent-d: #A8842F;
   --gold:     #C9A24B;
+  --gold-lt:  #E0C57E;
 
   --r:        4px;
   --shell:    1200px;
@@ -800,3 +801,18 @@ section{ position:relative; }
   .hero__slide:first-child{ opacity:1; }
   #intro{ display:none; }
 }
+
+/* Language switch (added) */
+.lang{
+  appearance:none; -webkit-appearance:none;
+  background:transparent; color:var(--gold);
+  border:1px solid rgba(201,162,75,.55); border-radius:2px;
+  font:inherit; font-size:.82rem; font-weight:600; letter-spacing:.08em;
+  padding:8px 26px 8px 12px; cursor:pointer; line-height:1;
+  transition:background .25s, border-color .25s, color .25s;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A24B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 8px center; background-size:12px;
+}
+.lang:hover{ background-color:rgba(201,162,75,.14); border-color:var(--gold); }
+.lang option{ color:#141210; background:#fff; }
+@media (max-width:760px){ .lang{ display:none; } }

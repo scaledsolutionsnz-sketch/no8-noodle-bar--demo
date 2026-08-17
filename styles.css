@@ -98,7 +98,7 @@ section{ position:relative; }
   font-weight:500;
   letter-spacing:.28em;
   text-transform:uppercase;
-  color:var(--accent);
+  color:var(--gold-ink);
   margin:0 0 16px;
   display:flex;
   align-items:center;
@@ -112,6 +112,7 @@ section{ position:relative; }
   opacity:.42;
 }
 .band--ink .eyebrow{ color:var(--gold); }
+.band--ink .eyebrow, .band--ink2 .eyebrow, .hero .eyebrow{ color:var(--accent); }
 .band--ink .eyebrow::after{ background:var(--gold); }
 
 .head{ max-width:640px; margin-bottom:38px; }
@@ -189,12 +190,13 @@ section{ position:relative; }
 }
 #intro .rule{
   height:1px;
-  width:0;
+  width:96px;
   background:var(--accent);
+  transform:scaleX(0); transform-origin:center;
   animation:introRule 1s .45s var(--ease) forwards;
 }
 @keyframes introUp{ from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
-@keyframes introRule{ from{width:0} to{width:96px} }
+@keyframes introRule{ from{transform:scaleX(0)} to{transform:scaleX(1)} }
 
 /* ---------- nav ----------------------------------------------------------- */
 
@@ -252,7 +254,7 @@ section{ position:relative; }
   letter-spacing:.06em;
   transition:background .3s var(--ease), border-color .3s var(--ease);
 }
-.nav__call:hover{ background:var(--accent); border-color:var(--accent); }
+.nav__call:hover{ background:var(--accent); border-color:var(--accent); color:var(--on-accent); }
 .nav__call svg{ width:15px; height:15px; }
 .nav__call span{ display:none; }
 
@@ -305,9 +307,9 @@ section{ position:relative; }
   font-size:17px;
   letter-spacing:.04em;
   border-bottom:1px solid rgba(255,255,255,.09);
-  transition:color .25s var(--ease), padding-left .25s var(--ease);
+  transition:color .25s var(--ease), transform .25s var(--ease);
 }
-.drawer a:hover{ color:#fff; padding-left:6px; }
+.drawer a:hover{ color:#fff; transform:translateX(6px); }
 .drawer .drawer__cta{ margin-top:22px; border:0; }
 
 .scrim{
@@ -323,6 +325,7 @@ section{ position:relative; }
 .hero{
   position:relative;
   min-height:100svh;
+  min-height:100dvh;
   background:var(--ink);
   display:flex;
   align-items:flex-end;
@@ -345,7 +348,8 @@ section{ position:relative; }
 .hero__veil{
   position:absolute; inset:0;
   background:
-    linear-gradient(180deg, rgba(12,11,10,.72) 0%, rgba(12,11,10,.4) 34%, rgba(12,11,10,.86) 100%);
+    linear-gradient(96deg, rgba(12,11,10,.92) 0%, rgba(12,11,10,.74) 38%, rgba(12,11,10,.3) 70%, rgba(12,11,10,.1) 100%),
+    linear-gradient(180deg, rgba(12,11,10,.5) 0%, rgba(12,11,10,.08) 26%, rgba(12,11,10,.72) 100%);
 }
 .hero__in{ position:relative; z-index:2; width:100%; }
 
@@ -509,7 +513,7 @@ section{ position:relative; }
   position:absolute;
   top:0; right:0;
   background:var(--accent);
-  color:#fff;
+  color:var(--on-accent);
   font-size:11px;
   font-weight:500;
   letter-spacing:.18em;
@@ -553,7 +557,7 @@ section{ position:relative; }
 .crew__card h3{ font-size:19px; margin-bottom:5px; }
 .crew__card .role{
   font-size:11px; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--accent); margin:0 0 10px;
+  color:var(--gold-ink); margin:0 0 10px;
 }
 .crew__card p{ font-size:15.5px; color:var(--muted); margin:0; }
 
@@ -632,7 +636,7 @@ section{ position:relative; }
 }
 .socials svg{ width:19px; height:19px; }
 .socials a:hover{ background:var(--accent); border-color:var(--accent); transform:translateY(-2px); }
-.socials a:hover{ color:#fff; }
+.socials a:hover{ color:var(--on-accent); }
 
 .actions{
   border:1px solid var(--line-dk);
@@ -795,11 +799,12 @@ section{ position:relative; }
   }
   .nav__links a::after{
     content:""; position:absolute; left:0; bottom:0;
-    height:1px; width:0; background:var(--accent);
-    transition:width .35s var(--ease);
+    height:1px; width:100%; background:var(--accent);
+    transform:scaleX(0); transform-origin:left center;
+    transition:transform .35s var(--ease);
   }
   .nav__links a:hover{ color:#fff; }
-  .nav__links a:hover::after{ width:100%; }
+  .nav__links a:hover::after{ transform:scaleX(1); }
   .burger{ display:none; }
   .hero{ align-items:center; padding:140px 0 90px; }
   .hero__scroll{ display:block; }

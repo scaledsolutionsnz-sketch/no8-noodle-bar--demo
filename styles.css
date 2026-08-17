@@ -12,9 +12,12 @@
   --paper:    #FFFFFF;
   --body:     #34322F;
   --muted:    #6A6763;
+  --muted-dk: #A6A19A;
   --line:     rgba(12,11,10,.12);
   --line-dk:  rgba(255,255,255,.14);
   --accent:   #C9A24B;
+  --on-accent:#141210;
+  --gold-ink: #7D5F16;
   --accent-d: #A8842F;
   --gold:     #C9A24B;
   --gold-lt:  #E0C57E;
@@ -70,7 +73,7 @@ p:last-child{ margin-bottom:0; }
 
 svg{ display:block; }
 
-::selection{ background:var(--accent); color:#fff; }
+::selection{ background:var(--accent); color:var(--on-accent); }
 
 /* ---------- shell + section rhythm ---------------------------------------- */
 
@@ -138,8 +141,8 @@ section{ position:relative; }
 }
 .btn svg{ width:17px; height:17px; flex:0 0 auto; }
 
-.btn--accent{ background:var(--accent); color:#fff; }
-.btn--accent:hover{ background:var(--accent-d); transform:translateY(-2px); }
+.btn--accent{ background:var(--accent); color:var(--on-accent); font-weight:700; }
+.btn--accent:hover{ background:var(--gold-lt); transform:translateY(-2px); }
 
 .btn--ghost{ border-color:rgba(255,255,255,.42); color:#fff; }
 .btn--ghost:hover{ background:rgba(255,255,255,.1); border-color:#fff; transform:translateY(-2px); }
@@ -225,7 +228,7 @@ section{ position:relative; }
 .brand__en b{ color:var(--accent); font-weight:500; }
 .brand__zh{
   font-family:var(--display);
-  font-size:10.5px;
+  font-size:11.5px;
   letter-spacing:.34em;
   color:rgba(255,255,255,.55);
   margin-top:4px;
@@ -816,3 +819,22 @@ section{ position:relative; }
 .lang:hover{ background-color:rgba(201,162,75,.14); border-color:var(--gold); }
 .lang option{ color:#141210; background:#fff; }
 @media (max-width:760px){ .lang{ display:none; } }
+
+/* Contrast corrections for the gold/black palette (added) */
+/* gold fills take near-black labels, not white */
+.btn--primary, .btn--gold, .cta__btn--primary,
+a.btn--primary, button.btn--primary { color: var(--on-accent) !important; }
+.btn--primary svg, .btn--gold svg { stroke: var(--on-accent); }
+.btn--primary:hover, .btn--gold:hover { color: var(--on-accent) !important; }
+/* gold text on light surfaces uses the darker gold ink */
+.band--paper .eyebrow, .band--bone .eyebrow,
+.band--paper a:not(.btn), .band--bone a:not(.btn) { color: var(--gold-ink); }
+.card__zh { color: var(--on-accent); }
+/* muted body copy on dark bands */
+.band--ink2 p, .band--dark p, .trust__item p, .review__when,
+.band--ink p, .band--ink .head p, .footer p,
+.band--ink .crew__card p, .band--ink .review__when { color: var(--muted-dk); }
+/* dark-band muted text, resolved against the real dark surfaces */
+.band--ink .head p, .band--ink2 .head p, .band--ink .card__body p,
+.band--ink2 .card__body p, .band--ink .crew__card p, .band--ink2 .crew__card p,
+.footer .muted, .band--ink .review__when, .band--ink2 .review__when { color: #A6A19A; }
